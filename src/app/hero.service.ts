@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { Observable, of } from 'rxjs';
 
 import { Hero } from './hero';
@@ -10,7 +11,7 @@ import { MessageService } from './message.service';
 })
 export class HeroService {
 
-  constructor(private messageService: MessageService) { 
+  constructor(private messageService: MessageService) {
 
   }
 
