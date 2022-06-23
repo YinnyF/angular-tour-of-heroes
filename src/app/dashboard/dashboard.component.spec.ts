@@ -1,14 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
 import { DashboardComponent } from './dashboard.component';
+
+import { HEROES } from '../testing/mock-heroes';
+import { HeroService } from '../services/hero.service';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
+  let heroService;
+  let getHeroesSpy;
 
   beforeEach(async () => {
+    heroService = jasmine.createSpyObj('HeroService', ['getHeroes']);
+    getHeroesSpy = heroService.getHeroes.and.returnValue( of(HEROES) );
+
     await TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
+      declarations: [ DashboardComponent ],
+      providers: [
+        { provide: HeroService, useValue: heroService }
+      ]
     })
     .compileComponents();
   });
@@ -19,7 +31,7 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 });
