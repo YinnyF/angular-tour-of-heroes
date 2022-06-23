@@ -34,4 +34,8 @@ describe('DashboardComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display "Top Heroes" as headline', () => {
+    expect(fixture.nativeElement.querySelector('h2').textContent).toEqual('Top Heroes');
+  })
 });
