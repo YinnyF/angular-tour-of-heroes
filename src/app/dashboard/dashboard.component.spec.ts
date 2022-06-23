@@ -48,4 +48,8 @@ describe('DashboardComponent', () => {
     expect(getHeroesSpy).toHaveBeenCalled();
     // expect(getHeroesSpy).toHaveBeenCalledTimes(1);
   })
+
+  it('should display 4 links', () => {
+    expect(fixture.nativeElement.querySelectorAll('a').length).toEqual(4);
+  })
 });
